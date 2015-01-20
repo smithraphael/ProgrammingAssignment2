@@ -7,8 +7,9 @@
 ##setsolve(): Set the value of the solve (inverse matrix calculation)
 ##getsolve(): Get the value of the solve (inverse matrix calculation)
 
-makeCacheMatrix <- function(x = matrix()) {
 
+makeCacheMatrix = function (x = matrix()){
+        
         s=NULL
         
         set <- function(y) {
@@ -23,9 +24,8 @@ makeCacheMatrix <- function(x = matrix()) {
         list(set = set, get = get,
              setsolve = setsolve,
              getsolve = getsolve)
-
 }
-
+        
 
 ## Check if the inverse of the matrix "x" is already calculated
 ## If it is calculated the function reads the data from Cache
@@ -33,9 +33,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## (if the matrix is invertible. Otherwise it returns an error)
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-        
-                s <- x$getsolve()
+        s <- x$getsolve()
         if(!is.null(s)) {
                 message("getting cached data")
                 return(s)
