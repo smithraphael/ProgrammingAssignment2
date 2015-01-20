@@ -1,11 +1,11 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## The makeCacheMatrix enclosure 4 functions described below
-## set():
-## get():
-##setsolve():
-##getsolve():
+## The makeCacheMatrix enclosures 4 functions described below
+## set(): Set the value of the matrix and creates an environment (parent) to cache calculated values
+## get():Get the value of the matrix
+##setsolve(): Set the value of the solve (inverse matrix calculation)
+##getsolve(): Get the value of the solve (inverse matrix calculation)
 
 makeCacheMatrix <- function(x = matrix()) {
 
@@ -24,12 +24,24 @@ makeCacheMatrix <- function(x = matrix()) {
              setsolve = setsolve,
              getsolve = getsolve)
 
-
 }
 
 
-## Write a short comment describing this function
+## Check if the inverse of the matrix "x" is already calculated
+## If it is calculated the function reads the data from Cache
+## If it still not, then calculates the inverse of a matrix and include the result into Cache
+## (if the matrix is invertible. Otherwise it returns an error)
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+        
+                s <- x$getsolve()
+        if(!is.null(s)) {
+                message("getting cached data")
+                return(s)
+        }
+        data <- x$get()
+        s <- solve(data, ...)
+        x$setsolve(s)
+        s
 }
