@@ -1,5 +1,6 @@
-## Put comments here that give an overall description of what your
-## functions do
+## This function allows a best computational performance, using cache memory to capture inverse matrix 
+## previously calculated.
+
 
 ## The makeCacheMatrix enclosures 4 functions described below
 ## set(): Set the value of the matrix and creates an environment (parent) to cache calculated values
